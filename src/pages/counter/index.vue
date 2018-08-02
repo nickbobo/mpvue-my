@@ -13,16 +13,19 @@
 <script>
 // Use Vuex
 import store from './store'
+import { mapState } from 'vuex'
 
 export default {
   computed: {
-    count () {
-      return store.state.count
-    }
+    ...mapState(['count'])
+    // count () {
+    //   return store.state.count
+    // }
   },
+
   methods: {
     increment () {
-      store.commit('increment')
+      store.commit('increment', 10) // 访问触发状态 承诺
     },
     decrement () {
       store.commit('decrement')

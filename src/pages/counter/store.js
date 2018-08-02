@@ -5,20 +5,25 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const store = new Vuex.Store({
-  state: {
-    count: 0
+// 状态对象 数字常量 不变的
+const state = {
+  count: 0
+}
+
+// 方法对象 访问触发状态
+const mutations = {
+  increment: (state, n) => {
+    const obj = state
+    obj.count += n
   },
-  mutations: {
-    increment: (state) => {
-      const obj = state
-      obj.count += 1
-    },
-    decrement: (state) => {
-      const obj = state
-      obj.count -= 1
-    }
+  decrement: (state) => {
+    const obj = state
+    obj.count -= 1
   }
+}
+const store = new Vuex.Store({
+  state,
+  mutations
 })
 
 export default store
